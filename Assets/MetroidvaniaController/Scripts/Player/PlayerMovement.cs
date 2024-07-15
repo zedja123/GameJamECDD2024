@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
-	bool jump = false;
+	float verticalMove = 0f;
+    bool jump = false;
 	bool dash = false;
 
 	//bool dashAxis = false;
@@ -19,8 +20,8 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 		/*if (Input.GetKeyDown(KeyCode.Z))
 		{
@@ -62,7 +63,7 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
-		jump = false;
+        jump = false;
 		dash = false;
 	}
 }

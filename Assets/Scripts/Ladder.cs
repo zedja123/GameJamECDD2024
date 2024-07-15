@@ -5,12 +5,12 @@ using UnityEngine;
 public class Ladder : MonoBehaviour
 {
 
-    [SerializeField] public float speed = 4f;
+    private CharacterController2D characterController;
     // Start is called before the first frame update
 
     void Start()
     {
-        
+        characterController = FindObjectOfType<CharacterController2D>();
     }
 
     // Update is called once per frame
@@ -19,18 +19,19 @@ public class Ladder : MonoBehaviour
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && Input.GetKey(KeyCode.UpArrow))
-            {
-            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, speed);
-        }else if (collision.tag == "Player" && Input.GetKey(KeyCode.DownArrow))
+        if(collision.tag == "Player")
         {
-            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -speed);
+            characterController.onLadder = true;
         }
-        else
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
         {
-            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
+            characterController.onLadder = false;
         }
     }
 }

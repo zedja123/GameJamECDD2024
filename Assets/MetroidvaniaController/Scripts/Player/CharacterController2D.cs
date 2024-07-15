@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class CharacterController2D : MonoBehaviour
 {
+
+	public bool onLadder;
+	[SerializeField] public float climbSpeed = 3.5f;
+	private float climbVelocity;
+	private float gravityStore;
+
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -62,8 +68,12 @@ public class CharacterController2D : MonoBehaviour
 			OnLandEvent = new UnityEvent();
 	}
 
+    private void Start()
+    {
+		gravityStore = m_Rigidbody2D.gravityScale;
+    }
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
@@ -134,7 +144,17 @@ public class CharacterController2D : MonoBehaviour
 	public void Move(float move, bool jump, bool dash)
 	{
 		if (canMove) {
-			if (dash && canDash && !isWallSliding)
+            if (onLadder)
+            {
+                m_Rigidbody2D.gravityScale = 0f;
+                float climbVelocity = climbSpeed * Input.GetAxisRaw("Vertical");
+                m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, climbVelocity);
+            }
+            else if(!onLadder)
+            {
+                m_Rigidbody2D.gravityScale = gravityStore;
+            }
+            if (dash && canDash && !isWallSliding)
 			{
 				//m_Rigidbody2D.AddForce(new Vector2(transform.localScale.x * m_DashForce, 0f));
 				StartCoroutine(DashCooldown());

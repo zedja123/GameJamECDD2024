@@ -359,7 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9e68c478f6553428f6b9b165f83376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
 --- !u!1001 &279834923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,7 +423,8 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 403068935}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8159117121546430313, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 1883190411}
   - component: {fileID: 1883190410}
   - component: {fileID: 1883190412}
+  - component: {fileID: 1883190413}
   m_Layer: 0
   m_Name: Escada_120x510 (1)
   m_TagString: Ladder
@@ -1256,6 +1257,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 5.1}
   m_EdgeRadius: 0
+--- !u!114 &1883190413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883190409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9e68c478f6553428f6b9b165f83376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948209693
 GameObject:
   m_ObjectHideFlags: 0
