@@ -48,7 +48,6 @@ GameObject:
   - component: {fileID: 50738830109512580}
   - component: {fileID: 70405055242815152}
   - component: {fileID: 82701611152381692}
-  - component: {fileID: -8159117121546430313}
   m_Layer: 1
   m_Name: DrawCharacter
   m_TagString: Player
@@ -96,6 +95,8 @@ MonoBehaviour:
     m_Bits: 53
   m_GroundCheck: {fileID: 4291727345091452}
   m_WallCheck: {fileID: 4986330650710208}
+  m_Grounded: 0
+  m_FacingRight: 1
   canDoubleJump: 0
   m_DashForce: 25
   life: 10
@@ -150,6 +151,8 @@ MonoBehaviour:
   animator: {fileID: 95975118031919256}
   canAttack: 1
   isTimeToCheck: 0
+  characterController: {fileID: 0}
+  playerMovement: {fileID: 0}
   cam: {fileID: 0}
 --- !u!114 &114145887554720856
 MonoBehaviour:
@@ -164,8 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 114231493902538710}
+  rb: {fileID: 0}
   animator: {fileID: 95975118031919256}
+  onLadder: 0
+  climbSpeed: 3.5
   runSpeed: 40
+  canMove: 1
 --- !u!212 &212971026275759962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -397,18 +404,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &-8159117121546430313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377240496476148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be457a9e6a74704b8b971f090f44c3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1393053470196254
 GameObject:
   m_ObjectHideFlags: 0

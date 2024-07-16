@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
 	[SerializeField] public CharacterController2D characterController;
+	[SerializeField] public PlayerMovement playerMovement;
 
 	public GameObject cam;
 
@@ -32,25 +33,26 @@ public class Attack : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Z) && canAttack)
 		{
 			canAttack = false;
-            characterController.velocity = Vector3.zero;
+            playerMovement.canMove = false;
+            m_Rigidbody2D.velocity = Vector2.zero;
             animator.SetBool("IsAttacking", true);
 			StartCoroutine(AttackCooldown());
 		}
 
-		/*if (Input.GetKeyDown(KeyCode.V))
+		if (Input.GetKeyDown(KeyCode.V))
 		{
 			GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
 			Vector2 direction = new Vector2(transform.localScale.x, 0);
 			throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
 			throwableWeapon.name = "ThrowableWeapon";
-		}*/
+		}
 	}
 
 	IEnumerator AttackCooldown()
 	{
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(0.25f);
 		canAttack = true;
-        characterController.canMove = true;
+        playerMovement.canMove = true;
     }
 
 	public void DoDashDamage()
