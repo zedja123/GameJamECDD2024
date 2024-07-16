@@ -60,10 +60,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		// Move our character
-		if(controller.canMove == true)
-		{
-            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
-        }
+        controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
         jump = false;
 		dash = false;
 	}

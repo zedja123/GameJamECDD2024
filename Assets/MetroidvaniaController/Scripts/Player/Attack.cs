@@ -32,7 +32,6 @@ public class Attack : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Z) && canAttack)
 		{
 			canAttack = false;
-			characterController.canMove = false;
             characterController.velocity = Vector3.zero;
             animator.SetBool("IsAttacking", true);
 			StartCoroutine(AttackCooldown());
@@ -49,7 +48,7 @@ public class Attack : MonoBehaviour
 
 	IEnumerator AttackCooldown()
 	{
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(2f);
 		canAttack = true;
         characterController.canMove = true;
     }
