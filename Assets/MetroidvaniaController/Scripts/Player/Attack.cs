@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-	public float dmgValue = 4;
+    [SerializeField] public Defend defend;
+    public float dmgValue = 4;
 	public GameObject throwableObject;
 	public Transform attackCheck;
 	private Rigidbody2D m_Rigidbody2D;
 	public Animator animator;
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
+	public bool isAttacking = false;
 	[SerializeField] public CharacterController2D characterController;
-	[SerializeField] public PlayerMovement playerMovement;
 
 	public GameObject cam;
 
@@ -30,9 +31,10 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Z) && canAttack)
+		if (Input.GetKeyDown(KeyCode.Z) && canAttack && !defend.isDefending)
 		{
 			canAttack = false;
+			isAttacking = true;
             characterController.canMove = false;
             m_Rigidbody2D.velocity = Vector2.zero;
             animator.SetBool("IsAttacking", true);
@@ -52,7 +54,8 @@ public class Attack : MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.25f);
 		canAttack = true;
-        playerMovement.canMove = true;
+        characterController.canMove = true;
+        isAttacking = true;
     }
 
 	public void DoDashDamage()

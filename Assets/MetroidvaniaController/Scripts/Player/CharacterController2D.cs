@@ -91,6 +91,11 @@ public class CharacterController2D : MonoBehaviour
                 m_Rigidbody2D.gravityScale = 0f;
                 float climbVelocity = climbSpeed * Input.GetAxisRaw("Vertical");
                 m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, climbVelocity);
+                if(m_Rigidbody2D.velocity.y != 0)
+                {
+                }else if (!m_Grounded && m_Rigidbody2D.velocity.y == 0)
+                {
+                }
             }
             else if (!onLadder)
             {

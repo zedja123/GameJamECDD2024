@@ -6,9 +6,11 @@ public class Defend : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    [SerializeField] public Attack attack;
+    [SerializeField] public Animator animator;
     [SerializeField] public CharacterController2D characterController;
     public bool canDefend = true;
-    public bool defending;
+    public bool isDefending;
     void Start()
     {
         
@@ -17,13 +19,15 @@ public class Defend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.X) && canDefend)
+        if (Input.GetKey(KeyCode.X) && canDefend && !attack.isAttacking)
         {
-            defending = true;
+            isDefending = true;
+            animator.SetBool("IsDefending", true);
         }
         else
         {
-            defending = false;
+            isDefending = false;
+            animator.SetBool("IsDefending", false);
         }
     }
 
