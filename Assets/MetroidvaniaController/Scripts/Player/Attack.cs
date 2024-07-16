@@ -11,6 +11,7 @@ public class Attack : MonoBehaviour
 	public Animator animator;
 	public bool canAttack = true;
 	public bool isTimeToCheck = false;
+	[SerializeField] public CharacterController2D characterController;
 
 	public GameObject cam;
 
@@ -28,27 +29,30 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.X) && canAttack)
+		if (Input.GetKeyDown(KeyCode.Z) && canAttack)
 		{
 			canAttack = false;
-			animator.SetBool("IsAttacking", true);
+			characterController.canMove = false;
+            characterController.velocity = Vector3.zero;
+            animator.SetBool("IsAttacking", true);
 			StartCoroutine(AttackCooldown());
 		}
 
-		if (Input.GetKeyDown(KeyCode.V))
+		/*if (Input.GetKeyDown(KeyCode.V))
 		{
 			GameObject throwableWeapon = Instantiate(throwableObject, transform.position + new Vector3(transform.localScale.x * 0.5f,-0.2f), Quaternion.identity) as GameObject; 
 			Vector2 direction = new Vector2(transform.localScale.x, 0);
 			throwableWeapon.GetComponent<ThrowableWeapon>().direction = direction; 
 			throwableWeapon.name = "ThrowableWeapon";
-		}
+		}*/
 	}
 
 	IEnumerator AttackCooldown()
 	{
 		yield return new WaitForSeconds(0.25f);
 		canAttack = true;
-	}
+        characterController.canMove = true;
+    }
 
 	public void DoDashDamage()
 	{

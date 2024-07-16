@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public CharacterController2D controller;
+	[SerializeField] public CharacterController2D controller;
 	public Animator animator;
 
 	public float runSpeed = 40f;
 
 	float horizontalMove = 0f;
-	float verticalMove = 0f;
     bool jump = false;
 	bool dash = false;
 
@@ -20,7 +19,6 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-        verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 		/*if (Input.GetKeyDown(KeyCode.Z))
@@ -62,7 +60,10 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
+		if(controller.canMove == true)
+		{
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, dash);
+        }
         jump = false;
 		dash = false;
 	}
