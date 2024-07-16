@@ -2,9 +2,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class CharacterController2D : MonoBehaviour
 {
+    public Vector3 theScale;
+    [SerializeField] public Defend defend;
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     [Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;   // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -31,7 +34,7 @@ public class CharacterController2D : MonoBehaviour
 
     public float life = 10f; //Life of the player
     public bool invincible = false; //If player can die
-    private bool canMove = true; //If player can move
+    public bool canMove = true; //If player can move
 
     private Animator animator;
     public ParticleSystem particleJumpUp; //Trail particles
@@ -62,6 +65,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
+        theScale = transform.localScale;
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gravityStore = m_Rigidbody2D.gravityScale;
@@ -304,28 +308,87 @@ public class CharacterController2D : MonoBehaviour
         m_FacingRight = !m_FacingRight;
 
         // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+        Debug.Log("theScale: " + theScale);
     }
 
     public void ApplyDamage(float damage, Vector3 position)
     {
         if (!invincible)
         {
-            animator.SetBool("Hit", true);
-            life -= damage;
             Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
-            m_Rigidbody2D.velocity = Vector2.zero;
-            m_Rigidbody2D.AddForce(damageDir * 10);
-            if (life <= 0)
+
+            if (defend.defending && damageDir.x / 40f <= 0 && theScale.x == 1)
             {
-                StartCoroutine(WaitToDead());
+                animator.SetBool("Hit", true);
+                m_Rigidbody2D.velocity = Vector2.zero;
+                m_Rigidbody2D.AddForce(damageDir * 10);
+                Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
+                Debug.Log("Defended! From Right");
             }
-            else
+            else if (defend.defending && damageDir.x / 40f <= 0 && theScale.x == -1)
             {
-                StartCoroutine(Stun(0.25f));
-                StartCoroutine(MakeInvincible(1f));
+                Debug.Log("Hit on Back!");
+                animator.SetBool("Hit", true);
+                life -= damage;
+                Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
+                m_Rigidbody2D.velocity = Vector2.zero;
+                m_Rigidbody2D.AddForce(damageDir * 20);
+                if (life <= 0)
+                {
+                    StartCoroutine(WaitToDead());
+                }
+                else
+                {
+                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(MakeInvincible(1f));
+                }
+            }
+            else if (defend.defending && damageDir.x / 40f >= 0 && theScale.x == -1)
+            {
+                animator.SetBool("Hit", true);
+                m_Rigidbody2D.velocity = Vector2.zero;
+                m_Rigidbody2D.AddForce(damageDir * 10);
+                Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
+                Debug.Log("Defended! From Left");
+            }
+            else if (defend.defending && damageDir.x / 40f >= 0 && theScale.x == 1)
+            {
+                Debug.Log("Hit on Back!");
+                animator.SetBool("Hit", true);
+                life -= damage;
+                Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
+                m_Rigidbody2D.velocity = Vector2.zero;
+                m_Rigidbody2D.AddForce(damageDir * 20);
+                if (life <= 0)
+                {
+                    StartCoroutine(WaitToDead());
+                }
+                else
+                {
+                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(MakeInvincible(1f));
+                }
+            }
+            else if (!defend.defending)
+            {
+                Debug.Log("Hit!");
+                animator.SetBool("Hit", true);
+                life -= damage;
+                Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
+                m_Rigidbody2D.velocity = Vector2.zero;
+                m_Rigidbody2D.AddForce(damageDir * 20);
+                if (life <= 0)
+                {
+                    StartCoroutine(WaitToDead());
+                }
+                else
+                {
+                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(MakeInvincible(1f));
+                }
+
             }
         }
     }

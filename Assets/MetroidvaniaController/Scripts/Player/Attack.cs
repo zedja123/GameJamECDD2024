@@ -33,7 +33,7 @@ public class Attack : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Z) && canAttack)
 		{
 			canAttack = false;
-            playerMovement.canMove = false;
+            characterController.canMove = false;
             m_Rigidbody2D.velocity = Vector2.zero;
             animator.SetBool("IsAttacking", true);
 			StartCoroutine(AttackCooldown());
