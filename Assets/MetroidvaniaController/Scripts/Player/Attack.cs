@@ -34,7 +34,8 @@ public class Attack : MonoBehaviour
             characterController.canMove = false;
             m_Rigidbody2D.velocity = Vector2.zero;
             animator.SetBool("IsAttacking", true);
-			StartCoroutine(AttackCooldown());
+            DoAttackDamage()
+            StartCoroutine(AttackCooldown());
 		}
 
 		if (Input.GetKeyDown(KeyCode.V))
@@ -54,7 +55,7 @@ public class Attack : MonoBehaviour
         isAttacking = false;
     }
 
-	public void DoDashDamage()
+	public void DoAttackDamage()
 	{
 		dmgValue = Mathf.Abs(dmgValue);
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
@@ -62,11 +63,7 @@ public class Attack : MonoBehaviour
 		{
 			if (collidersEnemies[i].gameObject.tag == "Enemy")
 			{
-				if (collidersEnemies[i].transform.position.x - transform.position.x < 0)
-				{
-					dmgValue = -dmgValue;
-				}
-				collidersEnemies[i].gameObject.SendMessage("ApplyDamage", dmgValue);
+				collidersEnemies[i].GetComponent<Enemy>().ApplyDamage(dmgValue, characterController.m_Rigidbody2D.transform.position);
 				cam.GetComponent<CameraFollow>().ShakeCamera();
 			}
 		}

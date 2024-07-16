@@ -67,15 +67,14 @@ public class Enemy : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	public void ApplyDamage(float damage) {
+	public void ApplyDamage(float damage, Vector3 position) {
 		if (!isInvincible) 
 		{
-			float direction = damage / Mathf.Abs(damage);
-			damage = Mathf.Abs(damage);
-			transform.GetComponent<Animator>().SetBool("Hit", true);
-			life -= damage;
-			rb.velocity = Vector2.zero;
-			rb.AddForce(new Vector2(direction * 500f, 100f));
+            Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
+            transform.GetComponent<Animator>().SetBool("Hit", true);
+            life -= damage;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(damageDir * 10);
 			StartCoroutine(HitTime());
 		}
 	}

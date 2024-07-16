@@ -8,6 +8,7 @@ public class CharacterController2D : MonoBehaviour
 {
     public Vector3 theScale;
     [SerializeField] public Defend defend;
+    [SerializeField] public Attack attack;
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
     [Range(0, .3f)][SerializeField] private float m_MovementSmoothing = .05f;   // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -17,7 +18,7 @@ public class CharacterController2D : MonoBehaviour
 
     const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     public bool m_Grounded;            // Whether or not the player is grounded.
-    private Rigidbody2D m_Rigidbody2D;
+    public Rigidbody2D m_Rigidbody2D;
     public bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 velocity = Vector3.zero;
     private float limitFallSpeed = 25f; // Limit fall speed
@@ -339,14 +340,14 @@ public class CharacterController2D : MonoBehaviour
                 life -= damage;
                 Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
                 m_Rigidbody2D.velocity = Vector2.zero;
-                m_Rigidbody2D.AddForce(damageDir * 20);
+                m_Rigidbody2D.AddForce(damageDir * 10);
                 if (life <= 0)
                 {
                     StartCoroutine(WaitToDead());
                 }
                 else
                 {
-                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(Stun(0.5f));
                     StartCoroutine(MakeInvincible(1f));
                 }
             }
@@ -365,14 +366,14 @@ public class CharacterController2D : MonoBehaviour
                 life -= damage;
                 Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
                 m_Rigidbody2D.velocity = Vector2.zero;
-                m_Rigidbody2D.AddForce(damageDir * 20);
+                m_Rigidbody2D.AddForce(damageDir * 10);
                 if (life <= 0)
                 {
                     StartCoroutine(WaitToDead());
                 }
                 else
                 {
-                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(Stun(0.5f));
                     StartCoroutine(MakeInvincible(1f));
                 }
             }
@@ -383,14 +384,14 @@ public class CharacterController2D : MonoBehaviour
                 life -= damage;
                 Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
                 m_Rigidbody2D.velocity = Vector2.zero;
-                m_Rigidbody2D.AddForce(damageDir * 20);
+                m_Rigidbody2D.AddForce(damageDir * 10);
                 if (life <= 0)
                 {
                     StartCoroutine(WaitToDead());
                 }
                 else
                 {
-                    StartCoroutine(Stun(0.25f));
+                    StartCoroutine(Stun(0.5f));
                     StartCoroutine(MakeInvincible(1f));
                 }
 
@@ -412,7 +413,11 @@ public class CharacterController2D : MonoBehaviour
     IEnumerator Stun(float time)
     {
         canMove = false;
+        attack.canAttack = false;
+        defend.canDefend = false;
         yield return new WaitForSeconds(time);
+        attack.canAttack = true;
+        defend.canDefend = true;
         canMove = true;
     }
     IEnumerator MakeInvincible(float time)
