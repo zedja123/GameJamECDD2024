@@ -42,9 +42,7 @@ GameObject:
   - component: {fileID: 4660076192433278}
   - component: {fileID: 114231493902538710}
   - component: {fileID: 114435281327171648}
-  - component: {fileID: 114145887554720856}
   - component: {fileID: 212971026275759962}
-  - component: {fileID: 95975118031919256}
   - component: {fileID: 50738830109512580}
   - component: {fileID: 70405055242815152}
   - component: {fileID: 82701611152381692}
@@ -87,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783f8b7882d2d2a42a5b76de9179978f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theScale: {x: 0, y: 0, z: 0}
+  defend: {fileID: 0}
   m_JumpForce: 850
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -101,12 +101,16 @@ MonoBehaviour:
   m_DashForce: 25
   life: 10
   invincible: 0
+  canMove: 1
   particleJumpUp: {fileID: 198584872278178884}
   particleJumpDown: {fileID: 198967111524372206}
+  onLadder: 0
+  climbSpeed: 3.5
+  runSpeed: 4
   OnFallEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114145887554720856}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OnFall
         m_Mode: 1
@@ -121,7 +125,7 @@ MonoBehaviour:
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114145887554720856}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OnLanding
         m_Mode: 1
@@ -145,34 +149,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9955788a5eaffa49a9297f38eaa6202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defend: {fileID: 0}
   dmgValue: 4
   throwableObject: {fileID: 5532974359214069763, guid: 340067e8e5a097546ad175f1d00a6ece, type: 3}
   attackCheck: {fileID: 4370582630649528}
-  animator: {fileID: 95975118031919256}
+  animator: {fileID: 0}
   canAttack: 1
   isTimeToCheck: 0
+  isAttacking: 0
   characterController: {fileID: 0}
-  playerMovement: {fileID: 0}
   cam: {fileID: 0}
---- !u!114 &114145887554720856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377240496476148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8644d33345e77614ba3ace9c18398d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 114231493902538710}
-  rb: {fileID: 0}
-  animator: {fileID: 95975118031919256}
-  onLadder: 0
-  climbSpeed: 3.5
-  runSpeed: 40
-  canMove: 1
 --- !u!212 &212971026275759962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -225,27 +211,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &95975118031919256
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377240496476148}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3c27b3edc7c7dd49aa745bbedc2eed1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &50738830109512580
 Rigidbody2D:
   serializedVersion: 4

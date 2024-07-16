@@ -2238,10 +2238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f5fa2cbaad7eb4fb591a93693c6ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 1096751876}
   animator: {fileID: 1096751872}
   characterController: {fileID: 1096751869}
   canDefend: 1
-  defending: 0
+  isDefending: 0
 --- !u!95 &1096751872
 Animator:
   serializedVersion: 5
@@ -2263,6 +2264,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1096751876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+  m_PrefabInstance: {fileID: 2116976710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837684601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9955788a5eaffa49a9297f38eaa6202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1225246893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3231,9 +3243,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: defend
+      value: 
+      objectReference: {fileID: 1096751871}
+    - target: {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1096751872}
+    - target: {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+      propertyPath: m_Rigidbody2D
+      value: 
+      objectReference: {fileID: 1096751862}
     - target: {fileID: 114435281327171648, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
       propertyPath: characterController
       value: 
@@ -3254,9 +3274,7 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114145887554720856, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
-    - {fileID: 95975118031919256, guid: 50936cccdb69523458c1b42052ebafff, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -11,6 +11,11 @@ public class Defend : MonoBehaviour
     [SerializeField] public CharacterController2D characterController;
     public bool canDefend = true;
     public bool isDefending;
+    private Rigidbody2D m_Rigidbody2D;
+    private void Awake()
+    {
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
         
@@ -22,11 +27,14 @@ public class Defend : MonoBehaviour
         if (Input.GetKey(KeyCode.X) && canDefend && !attack.isAttacking)
         {
             isDefending = true;
+            m_Rigidbody2D.velocity = Vector2.zero;
+            characterController.canMove = false;
             animator.SetBool("IsDefending", true);
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.X) && canDefend && !attack.isAttacking)
         {
             isDefending = false;
+            characterController.canMove = true;
             animator.SetBool("IsDefending", false);
         }
     }

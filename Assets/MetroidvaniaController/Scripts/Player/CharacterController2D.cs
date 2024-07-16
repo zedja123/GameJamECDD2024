@@ -324,7 +324,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
 
-            if (defend.defending && damageDir.x / 40f <= 0 && theScale.x == 1)
+            if (defend.isDefending && damageDir.x / 40f <= 0 && theScale.x == 1)
             {
                 animator.SetBool("Hit", true);
                 m_Rigidbody2D.velocity = Vector2.zero;
@@ -332,7 +332,7 @@ public class CharacterController2D : MonoBehaviour
                 Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
                 Debug.Log("Defended! From Right");
             }
-            else if (defend.defending && damageDir.x / 40f <= 0 && theScale.x == -1)
+            else if (defend.isDefending && damageDir.x / 40f <= 0 && theScale.x == -1)
             {
                 Debug.Log("Hit on Back!");
                 animator.SetBool("Hit", true);
@@ -350,7 +350,7 @@ public class CharacterController2D : MonoBehaviour
                     StartCoroutine(MakeInvincible(1f));
                 }
             }
-            else if (defend.defending && damageDir.x / 40f >= 0 && theScale.x == -1)
+            else if (defend.isDefending && damageDir.x / 40f >= 0 && theScale.x == -1)
             {
                 animator.SetBool("Hit", true);
                 m_Rigidbody2D.velocity = Vector2.zero;
@@ -358,7 +358,7 @@ public class CharacterController2D : MonoBehaviour
                 Debug.Log("damageDir: " + Vector3.Normalize(transform.position - position));
                 Debug.Log("Defended! From Left");
             }
-            else if (defend.defending && damageDir.x / 40f >= 0 && theScale.x == 1)
+            else if (defend.isDefending && damageDir.x / 40f >= 0 && theScale.x == 1)
             {
                 Debug.Log("Hit on Back!");
                 animator.SetBool("Hit", true);
@@ -376,7 +376,7 @@ public class CharacterController2D : MonoBehaviour
                     StartCoroutine(MakeInvincible(1f));
                 }
             }
-            else if (!defend.defending)
+            else if (!defend.isDefending)
             {
                 Debug.Log("Hit!");
                 animator.SetBool("Hit", true);

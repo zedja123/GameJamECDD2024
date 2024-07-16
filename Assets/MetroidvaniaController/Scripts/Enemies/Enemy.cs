@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
 	private bool isObstacle;
 	private Transform fallCheck;
 	private Transform wallCheck;
+	private Transform AttackCheck;
 	public LayerMask turnLayerMask;
 	private Rigidbody2D rb;
 
@@ -21,7 +22,8 @@ public class Enemy : MonoBehaviour {
 	void Awake () {
 		fallCheck = transform.Find("FallCheck");
 		wallCheck = transform.Find("WallCheck");
-		rb = GetComponent<Rigidbody2D>();
+        wallCheck = transform.Find("AttackCheck");
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
