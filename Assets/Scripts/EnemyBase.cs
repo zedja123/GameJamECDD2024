@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyBase : MonoBehaviour
 {
+    
     [SerializeField] protected float health;
     [SerializeField] protected float recoilLength;
     [SerializeField] protected float recoilFactor;
@@ -11,6 +14,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float speed;
     protected bool facingRight;
     protected float recoilTimer;
+    protected bool isHitted;
     protected Rigidbody2D rb;
     protected bool isInvincible = false;
     protected Transform fallCheck;
@@ -39,11 +43,15 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-
+        if (health <= 0)
+        {
+            transform.GetComponent<Animator>().SetBool("IsDead", true);
+            StartCoroutine(DestroyEnemy());
+        }
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, floorLayerMask);
-        isObstacle = Physics2D.OverlapCircle(wallCheck.position, 1f, turnLayerMask);
+        isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 
 
@@ -86,12 +94,12 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void ApplyDamage(float _damageDone, Vector3 _hitDirection)
     {
+        Vector2 damageDir = Vector3.Normalize(transform.position -_hitDirection) * 40f;
+        transform.GetComponent<Animator>().SetBool("Hit", true);
         health -= _damageDone;
-        if (!isRecoiling)
-        {
-            rb.AddForce(recoilFactor * _hitDirection);
-            isRecoiling = true;
-        }
+        rb.velocity = Vector2.zero;
+        rb.AddForce(damageDir * 11f);
+        StartCoroutine(HitTime());
     }
     public virtual void Flip()
     {
@@ -103,4 +111,25 @@ public class EnemyBase : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    public virtual IEnumerator DestroyEnemy()
+    {
+        CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
+        capsule.size = new Vector2(1f, 0.25f);
+        capsule.offset = new Vector2(0f, -0.8f);
+        capsule.direction = CapsuleDirection2D.Horizontal;
+        yield return new WaitForSeconds(0.25f);
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
+    }
+
+    public virtual IEnumerator HitTime()
+    {
+        isHitted = true;
+        isInvincible = true;
+        yield return new WaitForSeconds(0.25f);
+        isHitted = false;
+        isInvincible = false;
+    }
+
 }
