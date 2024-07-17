@@ -43,7 +43,7 @@ public class EnemyBase : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, floorLayerMask);
-        isObstacle = Physics2D.OverlapCircle(wallCheck.position, 1f, turnLayerMask);
+        isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 
 
