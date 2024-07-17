@@ -43,11 +43,9 @@ public class EnemyBase : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         isPlat = Physics2D.OverlapCircle(fallCheck.position, .2f, floorLayerMask);
-        isObstacle = Physics2D.OverlapCircle(wallCheck.position, .4f, turnLayerMask);
+        isObstacle = Physics2D.OverlapCircle(wallCheck.position, 1f, turnLayerMask);
 
-        Debug.Log("IsObstacle: " + isObstacle);
-        Debug.Log("IsPlat: " + isPlat);
-        Debug.Log("IsReco: " + isRecoiling);
+
 
         if (isRecoiling)
         {
@@ -65,10 +63,8 @@ public class EnemyBase : MonoBehaviour
 
         if (!isRecoiling && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
         {
-            Debug.Log("Entered1");
             if (isPlat && !isObstacle && !isRecoiling)
             {
-                Debug.Log("Entered2");
                 if (facingRight)
                 {
                     Debug.Log("FacingRight");
@@ -82,6 +78,7 @@ public class EnemyBase : MonoBehaviour
             }
             else
             {
+                Debug.Log("Flipping");
                 Flip();
             }
         }
