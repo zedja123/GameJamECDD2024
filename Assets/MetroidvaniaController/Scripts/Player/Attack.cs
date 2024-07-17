@@ -34,7 +34,7 @@ public class Attack : MonoBehaviour
             characterController.canMove = false;
             m_Rigidbody2D.velocity = Vector2.zero;
             animator.SetBool("IsAttacking", true);
-            DoAttackDamage()
+			DoAttackDamage();
             StartCoroutine(AttackCooldown());
 		}
 
@@ -58,12 +58,12 @@ public class Attack : MonoBehaviour
 	public void DoAttackDamage()
 	{
 		dmgValue = Mathf.Abs(dmgValue);
-		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
+		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 1.5f);
 		for (int i = 0; i < collidersEnemies.Length; i++)
 		{
 			if (collidersEnemies[i].gameObject.tag == "Enemy")
 			{
-				collidersEnemies[i].GetComponent<Enemy>().ApplyDamage(dmgValue, characterController.m_Rigidbody2D.transform.position);
+				collidersEnemies[i].GetComponent<EnemyBase>().ApplyDamage(dmgValue, characterController.m_Rigidbody2D.transform.position);
 				cam.GetComponent<CameraFollow>().ShakeCamera();
 			}
 		}

@@ -53,11 +53,7 @@ public class Ally : MonoBehaviour
 
 		else if (enemy != null) 
 		{
-			if (isDashing)
-			{
-				m_Rigidbody2D.velocity = new Vector2(transform.localScale.x * m_DashForce, 0);
-			}
-			else if (!isHitted)
+			if (!isHitted)
 			{
 				distToPlayer = enemy.transform.position.x - transform.position.x;
 				distToPlayerY = enemy.transform.position.y - transform.position.y;
@@ -82,29 +78,7 @@ public class Ally : MonoBehaviour
 					anim.SetBool("IsWaiting", false);
 					m_Rigidbody2D.velocity = new Vector2(distToPlayer / Mathf.Abs(distToPlayer) * speed, m_Rigidbody2D.velocity.y);
 				}
-				else
-				{
-					if (!endDecision)
-					{
-						if ((distToPlayer > 0f && transform.localScale.x < 0f) || (distToPlayer < 0f && transform.localScale.x > 0f)) 
-							Flip();
 
-						if (randomDecision < 0.4f)
-							Run();
-						else if (randomDecision >= 0.4f && randomDecision < 0.6f)
-							Jump();
-						else if (randomDecision >= 0.6f && randomDecision < 0.8f)
-							StartCoroutine(Dash());
-						else if (randomDecision >= 0.8f && randomDecision < 0.95f)
-							RangeAttack();
-						else
-							Idle();
-					}
-					else
-					{
-						endDecision = false;
-					}
-				}
 			}
 			else if (isHitted)
 			{
@@ -166,15 +140,7 @@ public class Ally : MonoBehaviour
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 0.9f);
 		for (int i = 0; i < collidersEnemies.Length; i++)
 		{
-			if (collidersEnemies[i].gameObject.tag == "Enemy" && collidersEnemies[i].gameObject != gameObject )
-			{
-				if (transform.localScale.x < 1)
-				{
-					dmgValue = -dmgValue;
-				}
-				collidersEnemies[i].gameObject.SendMessage("ApplyDamage", dmgValue);
-			}
-			else if (collidersEnemies[i].gameObject.tag == "Player")
+			if (collidersEnemies[i].gameObject.tag == "Player")
 			{
 				collidersEnemies[i].gameObject.GetComponent<CharacterController2D>().ApplyDamage(2f, transform.position);
 			}
@@ -182,7 +148,7 @@ public class Ally : MonoBehaviour
 		StartCoroutine(WaitToAttack(0.5f));
 	}
 
-	public void RangeAttack()
+	/*public void RangeAttack()
 	{
 		if (doOnceDecision)
 		{
@@ -192,7 +158,7 @@ public class Ally : MonoBehaviour
 			throwableProj.GetComponent<ThrowableProjectile>().direction = direction;
 			StartCoroutine(NextDecision(0.5f));
 		}
-	}
+	}*/
 
 	public void Run()
 	{
@@ -201,7 +167,7 @@ public class Ally : MonoBehaviour
 		if (doOnceDecision)
 			StartCoroutine(NextDecision(0.5f));
 	}
-	public void Jump()
+	/*public void Jump()
 	{
 		Vector3 targetVelocity = new Vector2(distToPlayer / Mathf.Abs(distToPlayer) * speed, m_Rigidbody2D.velocity.y);
 		Vector3 velocity = Vector3.zero;
@@ -212,7 +178,7 @@ public class Ally : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, 850f));
 			StartCoroutine(NextDecision(1f));
 		}
-	}
+	}*/
 
 	public void Idle()
 	{

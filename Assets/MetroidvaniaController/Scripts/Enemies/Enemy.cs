@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour {
 	private bool isObstacle;
 	private Transform fallCheck;
 	private Transform wallCheck;
-	private Transform AttackCheck;
-	public LayerMask turnLayerMask;
+	private Transform attackCheck;
+	[SerializeField] public LayerMask turnLayerMask;
 	private Rigidbody2D rb;
 
 	private bool facingRight = true;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour {
 	void Awake () {
 		fallCheck = transform.Find("FallCheck");
 		wallCheck = transform.Find("WallCheck");
-        wallCheck = transform.Find("AttackCheck");
+        attackCheck = transform.Find("AttackCheck");
         rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour {
             transform.GetComponent<Animator>().SetBool("Hit", true);
             life -= damage;
             rb.velocity = Vector2.zero;
-            rb.AddForce(damageDir * 10);
+            rb.AddForce(damageDir * 30f);
 			StartCoroutine(HitTime());
 		}
 	}
