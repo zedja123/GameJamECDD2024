@@ -54,22 +54,7 @@ public class EnemyBase : MonoBehaviour
         isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 
-
-        if (isRecoiling)
-        {
-            if (recoilTimer < recoilLength)
-            {
-                recoilTimer += Time.deltaTime;
-            }
-            else
-            {
-                isRecoiling = false;
-                recoilTimer = 0;
-            }
-        }
-
-
-        if (!isRecoiling && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
+        if (!isHitted && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
         {
             if (isPlat && !isObstacle && !isRecoiling)
             {
