@@ -83,7 +83,6 @@ public class EnemyBase : MonoBehaviour
         transform.GetComponent<Animator>().SetBool("Hit", true);
         health -= _damageDone;
         rb.velocity = Vector2.zero;
-        rb.AddForce(damageDir * 11f);
         StartCoroutine(HitTime());
     }
     public virtual void Flip()
