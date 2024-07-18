@@ -56,7 +56,7 @@ public class EnemyBase : MonoBehaviour
 
         if (!isHitted && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
         {
-            if (isPlat && !isObstacle && !isRecoiling)
+            if (isPlat && !isObstacle && !isHitted)
             {
                 if (facingRight)
                 {
