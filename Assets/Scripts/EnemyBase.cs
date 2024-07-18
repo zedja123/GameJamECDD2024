@@ -5,30 +5,30 @@ using UnityEngine.UIElements;
 public class EnemyBase : MonoBehaviour
 {
     
-    [SerializeField] protected float health;
-    [SerializeField] protected float recoilLength;
-    [SerializeField] protected float recoilFactor;
-    [SerializeField] protected bool isRecoiling = false;
-    protected bool isPlat;
-    protected bool isObstacle;
-    [SerializeField] protected float speed;
-    protected bool facingRight;
-    protected float recoilTimer;
-    protected bool isHitted;
-    protected Rigidbody2D rb;
-    protected bool isInvincible = false;
-    protected Transform fallCheck;
-    protected Transform wallCheck;
-    protected Transform attackCheck;
-    protected Animator animator;
-    [SerializeField] protected LayerMask turnLayerMask;
-    [SerializeField] protected LayerMask floorLayerMask;
-    
-    
-    
+    [SerializeField] public float health;
+    [SerializeField] public float recoilLength;
+    [SerializeField] public float recoilFactor;
+    [SerializeField] public bool isRecoiling = false;
+    public bool isPlat;
+    public bool isObstacle;
+    [SerializeField] public float speed;
+    public bool facingRight;
+    public float recoilTimer;
+    public bool isHitted;
+    public Rigidbody2D rb;
+    public bool isInvincible = false;
+    public Transform fallCheck;
+    public Transform wallCheck;
+    public Transform attackCheck;
+    public Animator animator;
+    [SerializeField] public LayerMask turnLayerMask;
+    [SerializeField] public LayerMask floorLayerMask;
+
+
+
     // Start is called before the first frame update
 
-    protected virtual void Awake()
+    public void Awake()
     {
             fallCheck = transform.Find("FallCheck");
             wallCheck = transform.Find("WallCheck");
@@ -36,12 +36,12 @@ public class EnemyBase : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
     }
-    protected virtual void Start()
+    public void Start()
     {
 
     }
     // Update is called once per frame
-    protected virtual void Update()
+    public void Update()
     {
         if (health <= 0)
         {
@@ -77,7 +77,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    public virtual void ApplyDamage(float _damageDone, Vector3 _hitDirection)
+    public void ApplyDamage(float _damageDone, Vector3 _hitDirection)
     {
         Vector2 damageDir = Vector3.Normalize(transform.position -_hitDirection) * 40f;
         transform.GetComponent<Animator>().SetBool("Hit", true);
@@ -85,7 +85,7 @@ public class EnemyBase : MonoBehaviour
         rb.velocity = Vector2.zero;
         StartCoroutine(HitTime());
     }
-    public virtual void Flip()
+    public void Flip()
     {
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
@@ -95,7 +95,7 @@ public class EnemyBase : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-    public virtual IEnumerator DestroyEnemy()
+    IEnumerator DestroyEnemy()
     {
         CapsuleCollider2D capsule = GetComponent<CapsuleCollider2D>();
         capsule.size = new Vector2(1f, 0.25f);
@@ -107,7 +107,7 @@ public class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual IEnumerator HitTime()
+    IEnumerator HitTime()
     {
         isHitted = true;
         isInvincible = true;

@@ -24,14 +24,14 @@ public class Defend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.X) && canDefend && !attack.isAttacking)
+        if (Input.GetAxisRaw("Fire2") > 0 && canDefend && !attack.isAttacking)
         {
             isDefending = true;
             m_Rigidbody2D.velocity = Vector2.zero;
             characterController.canMove = false;
             animator.SetBool("IsDefending", true);
         }
-        else if (Input.GetKeyUp(KeyCode.X) && canDefend && !attack.isAttacking)
+        else if (Input.GetAxisRaw("Fire2") < 1 && canDefend && !attack.isAttacking)
         {
             isDefending = false;
             characterController.canMove = true;
