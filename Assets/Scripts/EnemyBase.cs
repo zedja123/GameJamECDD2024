@@ -9,7 +9,6 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] public float recoilLength;
     [SerializeField] public float recoilFactor;
     [SerializeField] public bool isRecoiling = false;
-    [SerializeField] public BoxCollider2D vision;
     [SerializeField] public bool seeingPlayer;
     public bool isPlat;
     public bool isObstacle;
@@ -26,6 +25,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] public LayerMask turnLayerMask;
     [SerializeField] public LayerMask floorLayerMask;
     [SerializeField] public GameObject player;
+    [SerializeField] public float aggroRange;
+    [SerializeField] public Transform castPoint;
 
 
 
@@ -46,6 +47,7 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+
         if (health <= 0)
         {
             transform.GetComponent<Animator>().SetBool("IsDead", true);
@@ -57,51 +59,80 @@ public class EnemyBase : MonoBehaviour
         isObstacle = Physics2D.OverlapCircle(wallCheck.position, .2f, turnLayerMask);
 
 
-        if (!isHitted && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
+        if (CanSeePlayer(aggroRange))
         {
-            if (seeingPlayer && health > 0)
+            Debug.Log("SeeingPlayer");
+            ChasePlayer();
+        }
+        else
+        {
+            if (!isHitted && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            }
-            if (isPlat && !isObstacle && !isHitted)
-            {
-                if (facingRight)
+                if (seeingPlayer && health > 0)
                 {
-                    rb.velocity = new Vector2(-speed, rb.velocity.y);
+                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                }
+                if (isPlat && !isObstacle && !isHitted)
+                {
+                    if (facingRight)
+                    {
+                        rb.velocity = new Vector2(-speed, rb.velocity.y);
+                    }
+                    else
+                    {
+                        rb.velocity = new Vector2(speed, rb.velocity.y);
+                    }
                 }
                 else
                 {
-                    rb.velocity = new Vector2(speed, rb.velocity.y);
+                    Debug.Log("Flipping");
+                    Flip();
                 }
+            }
+        }
+
+
+
+        
+    }
+
+    public bool CanSeePlayer(float distance)
+    {
+
+        bool val = false;
+        float castDist = distance;
+
+        Vector2 endPos = castPoint.position + Vector3.right * distance;
+
+        RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPos, 1 << LayerMask.NameToLayer("Player"));
+
+        if(hit.collider != null) 
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                val = true;
             }
             else
             {
-                Debug.Log("Flipping");
-                Flip();
+                val = false;
             }
+
         }
+
+        return val;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void ChasePlayer()
     {
-        Debug.Log("EnteredCollision");
-        if (collision == CompareTag("Player"))
+        if (transform.position.x < player.transform.position.x) 
         {
-            seeingPlayer = true;
-            Debug.Log("SeeingPlayer");
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("ExitedCollision");
-        if (collision == CompareTag("Player"))
-        {
-            seeingPlayer = false;
-            Debug.Log("NotSeeingPlayer");
-        }
-    }
-
     public void ApplyDamage(float _damageDone, Vector3 _hitDirection)
     {
         Vector2 damageDir = Vector3.Normalize(transform.position -_hitDirection) * 40f;
