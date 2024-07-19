@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] public float recoilLength;
     [SerializeField] public float recoilFactor;
     [SerializeField] public bool isRecoiling = false;
+    [SerializeField] public BoxCollider2D vision;
+    [SerializeField] public bool seeingPlayer;
     public bool isPlat;
     public bool isObstacle;
     [SerializeField] public float speed;
@@ -23,6 +25,7 @@ public class EnemyBase : MonoBehaviour
     public Animator animator;
     [SerializeField] public LayerMask turnLayerMask;
     [SerializeField] public LayerMask floorLayerMask;
+    [SerializeField] public GameObject player;
 
 
 
@@ -56,16 +59,18 @@ public class EnemyBase : MonoBehaviour
 
         if (!isHitted && health > 0 && Mathf.Abs(rb.velocity.y) < 0.5f)
         {
+            if (seeingPlayer && health > 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+            }
             if (isPlat && !isObstacle && !isHitted)
             {
                 if (facingRight)
                 {
-                    Debug.Log("FacingRight");
                     rb.velocity = new Vector2(-speed, rb.velocity.y);
                 }
                 else
                 {
-                    Debug.Log("FacingLeft");
                     rb.velocity = new Vector2(speed, rb.velocity.y);
                 }
             }
@@ -74,6 +79,26 @@ public class EnemyBase : MonoBehaviour
                 Debug.Log("Flipping");
                 Flip();
             }
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("EnteredCollision");
+        if (collision == CompareTag("Player"))
+        {
+            seeingPlayer = true;
+            Debug.Log("SeeingPlayer");
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Debug.Log("ExitedCollision");
+        if (collision == CompareTag("Player"))
+        {
+            seeingPlayer = false;
+            Debug.Log("NotSeeingPlayer");
         }
     }
 
