@@ -52,13 +52,13 @@ public class Attack : MonoBehaviour
 	{
 		dmgValue = Mathf.Abs(dmgValue);
 		Collider2D[] collidersEnemies = Physics2D.OverlapCircleAll(attackCheck.position, 1.5f);
-		for (int i = 0; i < collidersEnemies.Length; i++)
-		{
-			if (collidersEnemies[i].gameObject.tag == "Enemy")
-			{
-				collidersEnemies[i].GetComponent<EnemyBase>().ApplyDamage(dmgValue, characterController.m_Rigidbody2D.transform.position);
-				cam.GetComponent<CameraFollow>().ShakeCamera();
-			}
-		}
-	}
+        for (int i = 0; i < collidersEnemies.Length; i++)
+        {
+            if (collidersEnemies[i].gameObject.tag == "Enemy")
+            {
+                collidersEnemies[i].GetComponent<EnemyBase>().ApplyDamage(dmgValue, characterController.m_Rigidbody2D.transform.position);
+                cam.GetComponent<CameraFollow>().ShakeCamera();
+            }
+        }
+    }
 }
