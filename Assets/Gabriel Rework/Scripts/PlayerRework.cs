@@ -22,6 +22,10 @@ public class PlayerRework : MonoBehaviour
     private float climbVelocity;
     private float gravityStore;
 
+    //Shield
+    public bool canDefend = true;
+    public bool isDefending;
+
     // Health and Damage
     public int health = 3;
     [SerializeField] private float timeBtwAttack = 0f;
@@ -60,28 +64,8 @@ public class PlayerRework : MonoBehaviour
 
     private void Update()
     {
-        if (timeBtwAttack <= 0)
-        {           
-            animator.SetBool("isAttacking", false);
-
-            //then can attack
-            if (Input.GetButton("Fire1"))
-            {
-                Attack();
-                animator.SetBool("isAttacking", true);
-                timeBtwAttack = startTimeBtwAttack;
-                rb.velocity = new Vector2(0, rb.velocity.y);
-
-            }
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-           // animator.SetBool("isAttacking", false);
-
-        }
-
-
+        Deffend();
+        Attack();
         horizontal = Input.GetAxisRaw("Horizontal");
         Flip();
 
@@ -90,6 +74,8 @@ public class PlayerRework : MonoBehaviour
 
 
     //My functions
+
+    //movement
     private void ClimbLadder()
     {
         if (onLadder)
@@ -116,9 +102,9 @@ public class PlayerRework : MonoBehaviour
 
     private void Move()
     {
-        if (timeBtwAttack <= 0f)
+        if (timeBtwAttack <= 0f && !isDefending)
         {
-            //movement
+            
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
             if (rb.velocity.x != 0f)
             {
@@ -134,7 +120,41 @@ public class PlayerRework : MonoBehaviour
             }
         }
     }
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
+    }
+
+    //attack
     private void Attack()
+    {
+        if (timeBtwAttack <= 0)
+        {
+            animator.SetBool("isAttacking", false);
+
+            //then can attack
+            if (Input.GetButton("Fire1"))
+            {
+                AttackCheck();
+                animator.SetBool("isAttacking", true);
+                timeBtwAttack = startTimeBtwAttack;
+                rb.velocity = new Vector2(0, rb.velocity.y);
+
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+            // animator.SetBool("isAttacking", false);
+
+        }
+    }
+
+    private void AttackCheck()
     {   
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayerMask);
         for (int i = 0; i < enemiesToDamage.Length; i++)
@@ -142,21 +162,29 @@ public class PlayerRework : MonoBehaviour
             enemiesToDamage[i].GetComponent<EnemyMaster>().takeDamage(1);
         }
     }
+
+    private void Deffend()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0 && canDefend)
+        {
+            isDefending = true;
+            animator.SetBool("isDefending", true);
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
+        }
+        else if (Input.GetAxisRaw("Fire2") < 1 && canDefend)
+        {
+            isDefending = false;
+            animator.SetBool("isDefending", false);
+        }
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
-    private void Flip()
-    {
-            if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-            {
-                isFacingRight = !isFacingRight;
-                transform.Rotate(0f, 180f, 0f);
-            }
-        
-    }
 
+    //Damage handle
     public void playerTakeDamage()
     {
         health -= 1;
