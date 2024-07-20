@@ -217,19 +217,22 @@ public class PlayerRework : MonoBehaviour
     //Damage handle
     public void playerTakeDamage(int damage, Vector3 position)
     {
-        health -= damage;
-        Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
-        rb.velocity = Vector2.zero;
-        rb.AddForce(damageDir * 5);
-
-        StartCoroutine(Stun(0.5f));
-        StartCoroutine(MakeInvincible(1f));
-
-        animator.SetBool("Hit", true);
-
-        if (health <= 0)
+        if (!isDefending)
         {
-            playerDie();
+            health -= damage;
+            Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(damageDir * 5);
+
+            StartCoroutine(Stun(0.5f));
+            StartCoroutine(MakeInvincible(1f));
+
+            animator.SetBool("Hit", true);
+
+            if (health <= 0)
+            {
+                playerDie();
+            }
         }
     }
     private void UpdateHearts()
