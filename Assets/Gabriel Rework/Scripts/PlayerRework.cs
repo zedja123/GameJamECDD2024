@@ -76,26 +76,8 @@ public class PlayerRework : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if (i < health)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
-        }
+        UpdateHearts();
+ 
         if (canDefend)
         {
             Deffend();
@@ -233,6 +215,8 @@ public class PlayerRework : MonoBehaviour
     public void playerTakeDamage()
     {
         health -= 1;
+        rb.AddForce(transform.right * -500);
+
         StartCoroutine(Stun(0.5f));
         StartCoroutine(MakeInvincible(1f));
 
@@ -241,6 +225,29 @@ public class PlayerRework : MonoBehaviour
         if (health <= 0)
         {
             playerDie();
+        }
+    }
+    private void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
         }
     }
 
