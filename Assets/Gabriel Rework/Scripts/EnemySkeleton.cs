@@ -78,12 +78,22 @@ public class EnemySkeleton : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetBool("isAttacking", true);
-
-        Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, playerLayerMask);
-        for (int i = 0; i < playerToDamage.Length; i++)
+        if (timeBtwAttack <= 0)
         {
-            playerToDamage[i].GetComponent<PlayerRework>().playerTakeDamage();
+            animator.SetBool("isAttacking", true);
+
+
+            Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, playerLayerMask);
+            for (int i = 0; i < playerToDamage.Length; i++)
+            {
+                playerToDamage[i].GetComponent<PlayerRework>().playerTakeDamage();
+                timeBtwAttack = startTimeBtwAttack;
+            }
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+
         }
     }
     void OnDrawGizmosSelected()
@@ -93,13 +103,27 @@ public class EnemySkeleton : MonoBehaviour
     }
 
 
-    public void OnTriggerEnter2D(Collider2D target)
+    public void OnTriggerStay2D(Collider2D target)
     {
         if (target.tag == "Player")
         {
             Attack();
+            enemyMaster.initDazed();
+
+
 
         }
     }
+
+    public void OnTriggerExit2D(Collider2D target)
+    {
+        if (target.tag == "Player")
+        {
+            animator.SetBool("isAttacking", false);
+
+
+        }
+    }
+
 
 }

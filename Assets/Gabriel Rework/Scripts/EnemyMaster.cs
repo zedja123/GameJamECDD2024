@@ -11,9 +11,7 @@ public class EnemyMaster : MonoBehaviour
 
     public void Start()
     {
-        Physics2D.IgnoreLayerCollision(7, 9);
-        Physics2D.IgnoreLayerCollision(7, 7);
-
+        Physics2D.IgnoreLayerCollision(6, 6);
     }
 
 
@@ -33,8 +31,7 @@ public class EnemyMaster : MonoBehaviour
     public void takeDamage(int damage)
     {
 
-        dazed = true;
-        dazedTime = startDazedTime;
+        initDazed();
 
         health -= damage;
 
@@ -43,5 +40,11 @@ public class EnemyMaster : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void initDazed()
+    {
+        dazed = true;
+        dazedTime = startDazedTime;
     }
 }

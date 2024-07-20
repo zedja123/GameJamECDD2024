@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2896345609161728779}
   - component: {fileID: 5781427428681059227}
   - component: {fileID: 7694086665823867397}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -407126176, guid: 5cb51320bd8b50f4a9fa15174cb5d4c8, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 112718990, guid: 512158f3843bf3e43aa643c7d2f36aef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,9 +106,9 @@ MonoBehaviour:
   walking: 0
   health: 3
   timeBtwAttack: 0
-  startTimeBtwAttack: 0
+  startTimeBtwAttack: 1
   attackPos: {fileID: 9115712439134070257}
-  attackRange: 0
+  attackRange: 1
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -177,8 +177,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.95, y: 2.75}
+  m_Offset: {x: -0.36361384, y: -0.35748637}
+  m_Size: {x: 0.9713626, y: 2.4341986}
   m_Direction: 0
 --- !u!95 &7694086665823867397
 Animator:
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9115712439134070257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557637626077854457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
