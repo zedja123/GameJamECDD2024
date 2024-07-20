@@ -37,6 +37,13 @@ public class PlayerRework : MonoBehaviour
     public static bool gameOver = false;
     private bool hasShield = false;
 
+    //hearts UI
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public int numOfHearts;
+
+    //general components
     [SerializeField] public Animator animator;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -64,6 +71,27 @@ public class PlayerRework : MonoBehaviour
 
     private void Update()
     {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+
         Deffend();
         Attack();
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -85,6 +113,7 @@ public class PlayerRework : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, climbVelocity);
             if (rb.velocity.y != 0)
             {
+                animator.SetBool("isClimbing", true);
             }
             else if (!IsGrounded() && rb.velocity.y == 0)
             {
@@ -92,6 +121,7 @@ public class PlayerRework : MonoBehaviour
         }
         else if (!onLadder)
         {
+            animator.SetBool("isClimbing", false);
             rb.gravityScale = gravityStore;
         }
     }

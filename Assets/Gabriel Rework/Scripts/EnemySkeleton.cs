@@ -24,6 +24,7 @@ public class EnemySkeleton : MonoBehaviour
     
     [SerializeField] private float timeBtwAttack = 0f;
     public float startTimeBtwAttack;
+    public bool startLeft = false;
 
 
 
@@ -33,6 +34,11 @@ public class EnemySkeleton : MonoBehaviour
         enemyMaster = GetComponent<EnemyMaster>();
         curSpeed = speed;
         timeBtwAttack = 0f;
+
+        if (startLeft)
+        {
+            ChangeDirection();
+        }
 
     }
 
@@ -57,17 +63,22 @@ public class EnemySkeleton : MonoBehaviour
 
         if (HasTouchedWall())
         {
-            curSpeed *= -1;
-            speed *= -1;
-
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            ChangeDirection();
         }
 
 
 
 
+    }
+
+    private void ChangeDirection()
+    {
+        curSpeed *= -1;
+        speed *= -1;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
     }
 
     private bool HasTouchedWall()
