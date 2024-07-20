@@ -13,10 +13,14 @@ public class PlayerRework : MonoBehaviour
     //player movement
     private float horizontal;
     [SerializeField] private float speed = 8f;
-
     private bool isFacingRight = true;
     public bool walking;
-
+   
+    //ladder
+    public bool onLadder;
+    [SerializeField] public float climbSpeed = 3.5f;
+    private float climbVelocity;
+    private float gravityStore;
 
     // Health and Damage
     public int health = 3;
@@ -38,32 +42,20 @@ public class PlayerRework : MonoBehaviour
     //Start
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         playerDamage = 1;
-        //startTimeBtwAttack = 0.3f;
         timeBtwAttack = 0f;
+        gravityStore = rb.gravityScale;
+
     }
 
     //Update
     private void FixedUpdate()
     {
-        if (timeBtwAttack <= 0f)
-        {
-            //movement
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            if (rb.velocity.x != 0f)
-            {
-                walking = true;
-                animator.SetBool("isRunning", true);
-            }
-            else
-            {
-                walking = false;
-                animator.SetBool("isRunning", false);
-              
+        Move();
+        ClimbLadder();
 
-            }
-        }
-        
     }
 
     private void Update()
@@ -98,6 +90,50 @@ public class PlayerRework : MonoBehaviour
 
 
     //My functions
+    private void ClimbLadder()
+    {
+        if (onLadder)
+        {
+            rb.gravityScale = 0f;
+            float climbVelocity = climbSpeed * Input.GetAxisRaw("Vertical");
+            rb.velocity = new Vector2(rb.velocity.x, climbVelocity);
+            if (rb.velocity.y != 0)
+            {
+            }
+            else if (!IsGrounded() && rb.velocity.y == 0)
+            {
+            }
+        }
+        else if (!onLadder)
+        {
+            rb.gravityScale = gravityStore;
+        }
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Move()
+    {
+        if (timeBtwAttack <= 0f)
+        {
+            //movement
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            if (rb.velocity.x != 0f)
+            {
+                walking = true;
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                walking = false;
+                animator.SetBool("isRunning", false);
+
+
+            }
+        }
+    }
     private void Attack()
     {   
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayerMask);
