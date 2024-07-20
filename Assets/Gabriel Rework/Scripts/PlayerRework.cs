@@ -22,9 +22,6 @@ public class PlayerRework : MonoBehaviour
     private float climbVelocity;
     private float gravityStore;
 
-    //Shield
-    public bool canDefend = true;
-    public bool isDefending;
 
     // Health and Damage
     public int health = 3;
@@ -49,6 +46,13 @@ public class PlayerRework : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    //conditions
+    public bool invincible = false; //If player can die
+    public bool canMove = true; //If player can move
+    public bool canAttack = true; //If player can attack
+    public bool canDefend = true; // If player can defend
+    public bool isDefending; // If player is defending
+
 
     //Start
     private void Start()
@@ -64,6 +68,7 @@ public class PlayerRework : MonoBehaviour
     //Update
     private void FixedUpdate()
     {
+        if(canMove)
         Move();
         ClimbLadder();
 
@@ -91,11 +96,21 @@ public class PlayerRework : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+        if (canDefend)
+        {
+            Deffend();
+        }
+        if (canAttack)
+        {
+            Attack();
+        }
 
-        Deffend();
-        Attack();
         horizontal = Input.GetAxisRaw("Horizontal");
-        Flip();
+
+        if (canMove)
+        {
+            Flip();
+        }
 
     }
 
@@ -218,9 +233,12 @@ public class PlayerRework : MonoBehaviour
     public void playerTakeDamage()
     {
         health -= 1;
-        Debug.Log(health);
+        StartCoroutine(Stun(0.5f));
+        StartCoroutine(MakeInvincible(1f));
 
-        if(health <= 0)
+        animator.SetBool("Hit", true);
+
+        if (health <= 0)
         {
             playerDie();
         }
@@ -230,5 +248,25 @@ public class PlayerRework : MonoBehaviour
     {
         Debug.Log("Player Died");
         gameOver = true;
+    }
+
+
+    //Corroutines
+    IEnumerator Stun(float time)
+    {
+        canMove = false;
+        canAttack = false;
+        canDefend = false;
+        yield return new WaitForSeconds(time);
+        animator.SetBool("Hit", false);
+        canAttack = true;
+        canDefend = true;
+        canMove = true;
+    }
+    IEnumerator MakeInvincible(float time)
+    {
+        invincible = true;
+        yield return new WaitForSeconds(time);
+        invincible = false;
     }
 }
