@@ -212,10 +212,12 @@ public class PlayerRework : MonoBehaviour
     }
 
     //Damage handle
-    public void playerTakeDamage()
+    public void playerTakeDamage(int damage, Vector3 position)
     {
-        health -= 1;
-        rb.AddForce(transform.right * -500);
+        health -= damage;
+        Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(damageDir * 5);
 
         StartCoroutine(Stun(0.5f));
         StartCoroutine(MakeInvincible(1f));

@@ -97,7 +97,7 @@ public class EnemySkeleton : MonoBehaviour
             Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, playerLayerMask);
             for (int i = 0; i < playerToDamage.Length; i++)
             {
-                playerToDamage[i].GetComponent<PlayerRework>().playerTakeDamage();
+                playerToDamage[i].GetComponent<PlayerRework>().playerTakeDamage(1, transform.position);
                 timeBtwAttack = startTimeBtwAttack;
             }
         }
