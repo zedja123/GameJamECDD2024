@@ -114,7 +114,6 @@ public class PlayerRework : MonoBehaviour
             if (rb.velocity.y != 0)
             {
                 animator.SetBool("isClimbing", true);
-                SoundManager.PlaySound(SoundManager.Sound.Stairs);
             }
             else if (!IsGrounded() && rb.velocity.y == 0)
             {
