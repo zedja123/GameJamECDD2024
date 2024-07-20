@@ -9,8 +9,14 @@ public class EnemyMaster : MonoBehaviour
     public float dazedTime = 0;
     public float startDazedTime;
 
+    public Color damageColor;
+    public Color startColor;
+    private SpriteRenderer spriteRenderer;
+
     public void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = startColor;
         Physics2D.IgnoreLayerCollision(6, 6);
     }
 
@@ -25,13 +31,15 @@ public class EnemyMaster : MonoBehaviour
         if (dazedTime <= 0)
         {
             dazed = false;
+            spriteRenderer.color = startColor;
+
         }
     }
 
     public void takeDamage(int damage)
     {
-
-        initDazed();
+        //initDazed();
+        spriteRenderer.color = damageColor;
 
         health -= damage;
 
@@ -46,5 +54,6 @@ public class EnemyMaster : MonoBehaviour
     {
         dazed = true;
         dazedTime = startDazedTime;
+
     }
 }
