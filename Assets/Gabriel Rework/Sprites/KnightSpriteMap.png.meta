@@ -1,0 +1,602 @@
+fileFormatVersion: 2
+guid: 5cb51320bd8b50f4a9fa15174cb5d4c8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KnightSpriteMap_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1079
+        width: 195
+        height: 275
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2fb64f0daf2b654e81116ded1299739
+      internalID: -407126176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1079
+        width: 226
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f246d205444bff42897f9158fef4aa4
+      internalID: -645569252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_2
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 1079
+        width: 266
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98e4b3fc6a9c12b489101cbf637607cc
+      internalID: 196269397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_3
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 749
+        width: 255
+        height: 295
+      alignment: 9
+      pivot: {x: 0.49655497, y: 0.49553326}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57d364461850e7e44bbc576eb2fe99dd
+      internalID: 1867242399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_4
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 749
+        width: 255
+        height: 295
+      alignment: 9
+      pivot: {x: 0.40517136, y: 0.49394593}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a6d7ab89ab62545a7116c1195315b3
+      internalID: 1174686089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_5
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 750
+        width: 255
+        height: 295
+      alignment: 9
+      pivot: {x: 0.47738037, y: 0.48957726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb88c66845bbe44fb931186a95a2727
+      internalID: 791464393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_6
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 749
+        width: 255
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f4f9779bb0a494a92a75df3b20d898
+      internalID: -1889972965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_7
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 749
+        width: 255
+        height: 295
+      alignment: 9
+      pivot: {x: 0.47887608, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029d7a0a1fb0d0a4cb19312769db5676
+      internalID: 1380889531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_8
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 750
+        width: 255
+        height: 295
+      alignment: 9
+      pivot: {x: 0.45247203, y: 0.4999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c042f7c4226afa4419576af38a7560da
+      internalID: 969055203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_9
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 392
+        width: 210
+        height: 313
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfad8ee29545f3242a3afb3cde048e3f
+      internalID: 845547505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 392
+        width: 285
+        height: 313
+      alignment: 9
+      pivot: {x: 0.40939352, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a09821ccef2e544acb8da00be2b3ba
+      internalID: 60669313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_11
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 393
+        width: 286
+        height: 313
+      alignment: 9
+      pivot: {x: 0.40157506, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8062efcf9edce00449246ae28f8f503e
+      internalID: -1140493635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_12
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 392
+        width: 286
+        height: 313
+      alignment: 9
+      pivot: {x: 0.4101025, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4bd01a0ff97a894abdf9d771f351b3c
+      internalID: -919785048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_13
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 392
+        width: 210
+        height: 313
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c2400d2ecd13144a14faeffaed08f3
+      internalID: 308455067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_14
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 392
+        width: 210
+        height: 313
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcd6ec5ef849ae41820492672d64f75
+      internalID: 995746692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 40
+        width: 168
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79e13adb6320d344af0f66a13a7608c
+      internalID: 2210968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_16
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 40
+        width: 172
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f843ebfd9bff3904dad6ad34476cd7e0
+      internalID: 1693330151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_17
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 40
+        width: 172
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462257daf61809e458789a5c133c4008
+      internalID: 232446403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_18
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 40
+        width: 168
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc495e935c2822846bebc490a6f640ab
+      internalID: -865787342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_19
+      rect:
+        serializedVersion: 2
+        x: 1355
+        y: 40
+        width: 172
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf609e288abd284ca78c4c20f0c4cbb
+      internalID: -537656938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KnightSpriteMap_20
+      rect:
+        serializedVersion: 2
+        x: 1673
+        y: 40
+        width: 172
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a493306f690cd3640b596ea3cf405b53
+      internalID: 1306777240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      KnightSpriteMap_0: -407126176
+      KnightSpriteMap_1: -645569252
+      KnightSpriteMap_10: 60669313
+      KnightSpriteMap_11: -1140493635
+      KnightSpriteMap_12: -919785048
+      KnightSpriteMap_13: 308455067
+      KnightSpriteMap_14: 995746692
+      KnightSpriteMap_15: 2210968
+      KnightSpriteMap_16: 1693330151
+      KnightSpriteMap_17: 232446403
+      KnightSpriteMap_18: -865787342
+      KnightSpriteMap_19: -537656938
+      KnightSpriteMap_2: 196269397
+      KnightSpriteMap_20: 1306777240
+      KnightSpriteMap_3: 1867242399
+      KnightSpriteMap_4: 1174686089
+      KnightSpriteMap_5: 791464393
+      KnightSpriteMap_6: -1889972965
+      KnightSpriteMap_7: 1380889531
+      KnightSpriteMap_8: 969055203
+      KnightSpriteMap_9: 845547505
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
