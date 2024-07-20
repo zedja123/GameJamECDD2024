@@ -114,6 +114,7 @@ public class PlayerRework : MonoBehaviour
             if (rb.velocity.y != 0)
             {
                 animator.SetBool("isClimbing", true);
+                SoundManager.PlaySound(SoundManager.Sound.Stairs);
             }
             else if (!IsGrounded() && rb.velocity.y == 0)
             {
@@ -219,8 +220,10 @@ public class PlayerRework : MonoBehaviour
     //Damage handle
     public void playerTakeDamage(int damage, Vector3 position)
     {
+        
         if (!isDefending)
         {
+            SoundManager.PlaySound(SoundManager.Sound.PlayerHurt);
             health -= damage;
             Vector2 damageDir = Vector3.Normalize(transform.position - position) * 40f;
             rb.velocity = Vector2.zero;
@@ -235,6 +238,9 @@ public class PlayerRework : MonoBehaviour
             {
                 playerDie();
             }
+        }else if (isDefending) 
+        {
+            SoundManager.PlaySound(SoundManager.Sound.ShieldDeflect);
         }
     }
     private void UpdateHearts()

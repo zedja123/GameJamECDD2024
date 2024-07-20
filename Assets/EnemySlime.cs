@@ -29,6 +29,7 @@ public class EnemySlime : MonoBehaviour
     {
         if (timeBtwAttack <= 0)
         {
+            SoundManager.PlaySound(SoundManager.Sound.SlimeShoot);
             animator.SetBool("isShooting", true);
             Instantiate(SlimeShoot, ShootPos.position, ShootPos.rotation);
             timeBtwAttack = startTimeBtwAttack;
