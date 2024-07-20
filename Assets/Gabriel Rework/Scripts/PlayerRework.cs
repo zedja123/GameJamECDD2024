@@ -57,6 +57,9 @@ public class PlayerRework : MonoBehaviour
     //Start
     private void Start()
     {
+        Cursor.visible = false;
+
+
         rb = GetComponent<Rigidbody2D>();
 
         playerDamage = 1;
@@ -257,6 +260,8 @@ public class PlayerRework : MonoBehaviour
     {
         Debug.Log("Player Died");
         gameOver = true;
+        SceneManager.LoadScene("GameOver");
+
     }
 
 

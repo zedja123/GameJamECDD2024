@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GabrielTestLevel");
     }
 
     public void QuitGame()
