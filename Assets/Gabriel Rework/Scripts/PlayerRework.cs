@@ -169,6 +169,8 @@ public class PlayerRework : MonoBehaviour
             //then can attack
             if (Input.GetButton("Fire1"))
             {
+                SoundManager.PlaySound(SoundManager.Sound.PlayerAttack);
+
                 AttackCheck();
                 animator.SetBool("isAttacking", true);
                 timeBtwAttack = startTimeBtwAttack;
