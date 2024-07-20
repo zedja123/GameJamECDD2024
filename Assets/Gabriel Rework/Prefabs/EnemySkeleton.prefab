@@ -202,6 +202,8 @@ MonoBehaviour:
   dazed: 0
   dazedTime: 0
   startDazedTime: 0.5
+  damageColor: {r: 1, g: 0.5137255, b: 0.5137255, a: 1}
+  startColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2514672611618262962
 MonoBehaviour:
   m_ObjectHideFlags: 0
