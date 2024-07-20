@@ -38,7 +38,7 @@ public class EnemyMaster : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        //initDazed();
+        initDazed();
         spriteRenderer.color = damageColor;
 
         health -= damage;
