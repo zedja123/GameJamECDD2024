@@ -100,7 +100,6 @@ public class PlayerRework : MonoBehaviour
     //My functions
     private void Attack()
     {   
-        Debug.Log("player has attacked");
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayerMask);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {

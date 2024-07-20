@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaster: {fileID: 3381378243335586797}
   rb: {fileID: 8921252931177546553}
+  animator: {fileID: 8521922021367605846}
   speed: 2
   groundCheck: {fileID: 7582178066390309181}
   wallCheck: {fileID: 6274187444972189139}
@@ -226,6 +227,8 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  timeBtwAttack: 0
+  startTimeBtwAttack: 0
 --- !u!50 &8921252931177546553
 Rigidbody2D:
   serializedVersion: 4

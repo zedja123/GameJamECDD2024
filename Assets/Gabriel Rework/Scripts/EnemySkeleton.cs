@@ -7,6 +7,8 @@ public class EnemySkeleton : MonoBehaviour
     [SerializeField] private EnemyMaster enemyMaster;
 
     public Rigidbody2D rb;
+    [SerializeField] public Animator animator;
+
 
     public float speed;
     private float curSpeed;
@@ -15,11 +17,13 @@ public class EnemySkeleton : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-
+    //attack
     public Transform attackPos;
     public float attackRange;
     public LayerMask playerLayerMask;
-
+    
+    [SerializeField] private float timeBtwAttack = 0f;
+    public float startTimeBtwAttack;
 
 
 
@@ -28,6 +32,8 @@ public class EnemySkeleton : MonoBehaviour
     {
         enemyMaster = GetComponent<EnemyMaster>();
         curSpeed = speed;
+        timeBtwAttack = 0f;
+
     }
 
     // Update is called once per frame
@@ -72,6 +78,8 @@ public class EnemySkeleton : MonoBehaviour
 
     private void Attack()
     {
+        animator.SetBool("isAttacking", true);
+
         Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, playerLayerMask);
         for (int i = 0; i < playerToDamage.Length; i++)
         {
@@ -85,11 +93,12 @@ public class EnemySkeleton : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D target)
+    public void OnTriggerEnter2D(Collider2D target)
     {
         if (target.tag == "Player")
         {
             Attack();
+
         }
     }
 
