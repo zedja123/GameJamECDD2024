@@ -2826,6 +2826,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &757105884 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8921252931177546553, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
+  m_PrefabInstance: {fileID: 1831496236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &794898258
 GameObject:
   m_ObjectHideFlags: 0
@@ -5853,6 +5858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3381378243335586797, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1827342235}
     - target: {fileID: 3551216587391034645, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
       propertyPath: m_Name
       value: EnemySkeleton
@@ -5902,6 +5911,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
+--- !u!50 &1827342235 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8921252931177546553, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
+  m_PrefabInstance: {fileID: 1801202541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1831496236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5910,6 +5924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3381378243335586797, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 757105884}
     - target: {fileID: 3551216587391034645, guid: 3ab54c6c20b894948aae7e8f6706c65e, type: 3}
       propertyPath: m_Name
       value: EnemySkeleton (6)

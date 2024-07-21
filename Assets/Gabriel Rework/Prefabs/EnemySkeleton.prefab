@@ -206,6 +206,7 @@ MonoBehaviour:
   flashMat: {fileID: 2100000, guid: 50b7ce8c735a9674fb9d5aac1e15436d, type: 2}
   originalMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   flashTime: 0.2
+  rb: {fileID: 8921252931177546553}
 --- !u!114 &2514672611618262962
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class EnemyMaster : MonoBehaviour
     [SerializeField] private Material flashMat;
     [SerializeField] private Material originalMat;
     [SerializeField] private float flashTime = 0.5f;
+    [SerializeField] private Rigidbody2D rb;
 
     public void Start()
     {
@@ -23,7 +24,6 @@ public class EnemyMaster : MonoBehaviour
 
     public void Update()
     {
-
         if (dazedTime > 0)
         {
             dazedTime -= Time.deltaTime;
@@ -45,7 +45,7 @@ public class EnemyMaster : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(DestroyEnemy());
         }
     }
 
@@ -62,5 +62,13 @@ public class EnemyMaster : MonoBehaviour
         yield return new WaitForSeconds(time);
         spriteRenderer.material = originalMat;
 
+    }
+
+    IEnumerator DestroyEnemy()
+    {
+        transform.GetComponent<Animator>().SetBool("IsDead", true);
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }
