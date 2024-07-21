@@ -35,4 +35,9 @@ public class MainMenuManager : MonoBehaviour
         creditosImage.SetActive(true);
     }
 
+    public void voltarMenu()
+    {
+        creditosImage.SetActive(false);
+    }
+
 }
