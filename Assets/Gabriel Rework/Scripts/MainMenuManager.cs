@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject creditosImage;
+    public GameObject tutorialObject;
+    public GameObject voltarMenuObject;
+
+
     private void Start()
     {
         Cursor.visible = true;
@@ -33,11 +37,27 @@ public class MainMenuManager : MonoBehaviour
     public void Creditos()
     {
         creditosImage.SetActive(true);
+        voltarMenuObject.SetActive(true);
+
     }
 
     public void voltarMenu()
     {
         creditosImage.SetActive(false);
+        tutorialObject.SetActive(false);
+        voltarMenuObject.SetActive(false);
+
+
     }
+
+
+    public void tutorial()
+    {
+        tutorialObject.SetActive(true);
+        voltarMenuObject.SetActive(true);
+
+
+    }
+
 
 }
