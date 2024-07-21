@@ -21,7 +21,7 @@ public class EnemySkeleton : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
     public LayerMask playerLayerMask;
-    
+
     [SerializeField] private float timeBtwAttack = 0f;
     public float startTimeBtwAttack;
     public bool startLeft = false;

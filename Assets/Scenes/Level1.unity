@@ -1545,33 +1545,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySlime (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.91
       objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.22
+      value: 14.18
       objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5066,6 +5046,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySlime (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.79
@@ -7339,6 +7335,22 @@ PrefabInstance:
     - target: {fileID: 1092786420239479095, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_Name
       value: EnemySlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.x
