@@ -7336,22 +7336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySlime
       objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791122405134066072, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5175972382638775621, guid: a923db2cc37e104428c59d97733ed57c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.82

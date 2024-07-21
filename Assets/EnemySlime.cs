@@ -13,6 +13,7 @@ public class EnemySlime : MonoBehaviour
     [SerializeField] public GameObject SlimeShoot;
     [SerializeField] private EnemyMaster enemyMaster;
     [SerializeField] public float startTimeBtwAttack = 4f;
+    [SerializeField] private float animTime;
 
 
     private void Start()
@@ -33,11 +34,20 @@ public class EnemySlime : MonoBehaviour
             animator.SetBool("isShooting", true);
             Instantiate(SlimeShoot, ShootPos.position, ShootPos.rotation);
             timeBtwAttack = startTimeBtwAttack;
+            StartCoroutine(animationTime(animTime));
         }
         else
         {
             timeBtwAttack -= Time.deltaTime;
-            animator.SetBool("isShooting", false);
         }
+    }
+
+    IEnumerator animationTime(float time)
+    {
+        animator.SetBool("isShooting", true);
+        yield return new WaitForSeconds(time);
+        animator.SetBool("isShooting", false);
+
+
     }
 }
