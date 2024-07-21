@@ -25,6 +25,7 @@ public class EnemySkeleton : MonoBehaviour
     [SerializeField] private float timeBtwAttack = 0f;
     public float startTimeBtwAttack;
     public bool startLeft = false;
+    private bool attacked;
 
 
 
@@ -55,6 +56,14 @@ public class EnemySkeleton : MonoBehaviour
             curSpeed = speed;
         }
 
+        if (timeBtwAttack <= 0)
+        {
+            animator.SetBool("isAttacking", false);
+        }
+        else
+        {
+            timeBtwAttack -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
@@ -65,9 +74,6 @@ public class EnemySkeleton : MonoBehaviour
         {
             ChangeDirection();
         }
-
-
-
 
     }
 
@@ -89,18 +95,22 @@ public class EnemySkeleton : MonoBehaviour
 
     private void Attack()
     {
+        animator.SetBool("isAttacking", true);
+        timeBtwAttack = startTimeBtwAttack;
+
+        /*
         if (timeBtwAttack <= 0)
         {
             animator.SetBool("isAttacking", true);
 
-            /*
+            
             Collider2D[] playerToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, playerLayerMask);
             for (int i = 0; i < playerToDamage.Length; i++)
             {
                 playerToDamage[i].GetComponent<PlayerRework>().playerTakeDamage(1, transform.position);
                 timeBtwAttack = startTimeBtwAttack;
             }
-            */
+            
            
         }
         else
@@ -108,6 +118,7 @@ public class EnemySkeleton : MonoBehaviour
             timeBtwAttack -= Time.deltaTime;
 
         }
+         */
     }
     void OnDrawGizmosSelected()
     {
@@ -118,14 +129,14 @@ public class EnemySkeleton : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D target)
     {
-        if (target.tag == "Player")
+        if (target.tag == "Player" && timeBtwAttack <= 0)
         {
+
             Attack();
             enemyMaster.initDazed();
 
-
-
         }
+
     }
 
     public void OnTriggerExit2D(Collider2D target)
@@ -133,8 +144,6 @@ public class EnemySkeleton : MonoBehaviour
         if (target.tag == "Player")
         {
             animator.SetBool("isAttacking", false);
-
-
         }
     }
 

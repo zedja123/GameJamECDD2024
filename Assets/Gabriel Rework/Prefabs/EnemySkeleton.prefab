@@ -232,7 +232,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   timeBtwAttack: 0
-  startTimeBtwAttack: 1
+  startTimeBtwAttack: 2
   startLeft: 0
 --- !u!50 &8921252931177546553
 Rigidbody2D:
