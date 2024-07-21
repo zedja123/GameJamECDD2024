@@ -12,7 +12,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("GabrielTestLevel");
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()

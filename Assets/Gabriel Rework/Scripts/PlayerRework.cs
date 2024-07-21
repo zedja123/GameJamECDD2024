@@ -171,7 +171,7 @@ public class PlayerRework : MonoBehaviour
             {
                 SoundManager.PlaySound(SoundManager.Sound.PlayerAttack);
 
-                AttackCheck();
+               // AttackCheck();
                 animator.SetBool("isAttacking", true);
                 timeBtwAttack = startTimeBtwAttack;
                 rb.velocity = new Vector2(0, rb.velocity.y);

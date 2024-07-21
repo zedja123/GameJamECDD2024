@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 865197008}
   - component: {fileID: 865197009}
   m_Layer: 0
-  m_Name: GameOverManager
+  m_Name: VictoryManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

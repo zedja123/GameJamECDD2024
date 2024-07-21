@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene("GabrielTestLevel");
+        SceneManager.LoadScene("Level1");
     }
     public void GoToMainMenu()
     {
