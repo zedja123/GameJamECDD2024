@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public GameObject creditosImage;
     private void Start()
     {
         Cursor.visible = true;
@@ -27,6 +28,16 @@ public class MainMenuManager : MonoBehaviour
     public void OpenOptions()
     {
         // SceneManager.LoadScene("OptionsScene");
+    }
+
+    public void Creditos()
+    {
+        creditosImage.SetActive(true);
+    }
+
+    public void voltarMenu()
+    {
+        creditosImage.SetActive(false);
     }
 
 }

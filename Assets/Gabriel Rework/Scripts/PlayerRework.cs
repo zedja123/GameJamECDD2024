@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
-using Unity.VisualScripting;
+//using static UnityEditor.Searcher.SearcherWindow.Alignment;
+//using Unity.VisualScripting;
 
 
 public class PlayerRework : MonoBehaviour
