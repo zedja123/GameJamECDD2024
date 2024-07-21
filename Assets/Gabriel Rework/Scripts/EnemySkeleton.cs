@@ -26,12 +26,14 @@ public class EnemySkeleton : MonoBehaviour
     public float startTimeBtwAttack;
     public bool startLeft = false;
     private bool attacked;
+    private bool canMove = true;
 
 
 
 
     void Start()
     {
+        canMove = true;
         enemyMaster = GetComponent<EnemyMaster>();
         curSpeed = speed;
         timeBtwAttack = 0f;
@@ -68,13 +70,17 @@ public class EnemySkeleton : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(curSpeed, rb.velocity.y);
+        //move
+       
+            rb.velocity = new Vector2(curSpeed, rb.velocity.y);
+        
 
         if (HasTouchedWall())
         {
             ChangeDirection();
         }
 
+        animator.SetFloat("Speed", Mathf.Abs(curSpeed));
     }
 
     private void ChangeDirection()
@@ -131,7 +137,7 @@ public class EnemySkeleton : MonoBehaviour
     {
         if (target.tag == "Player" && timeBtwAttack <= 0)
         {
-
+            //canMove = false;
             Attack();
             enemyMaster.initDazed();
 
@@ -141,6 +147,7 @@ public class EnemySkeleton : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D target)
     {
+        //canMove = true;
         if (target.tag == "Player")
         {
             animator.SetBool("isAttacking", false);
