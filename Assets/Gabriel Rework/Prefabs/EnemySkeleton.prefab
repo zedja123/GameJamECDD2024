@@ -202,9 +202,7 @@ MonoBehaviour:
   health: 3
   dazed: 0
   dazedTime: 0
-  startDazedTime: 0.5
-  damageColor: {r: 1, g: 0.5137255, b: 0.5137255, a: 1}
-  startColor: {r: 1, g: 1, b: 1, a: 1}
+  startDazedTime: 2
   flashMat: {fileID: 2100000, guid: 50b7ce8c735a9674fb9d5aac1e15436d, type: 2}
   originalMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   flashTime: 0.2
@@ -236,7 +234,7 @@ MonoBehaviour:
     m_Bits: 512
   timeBtwAttack: 0
   startTimeBtwAttack: 2
-  startLeft: 0
+  startLeft: 1
 --- !u!50 &8921252931177546553
 Rigidbody2D:
   serializedVersion: 4
@@ -352,9 +350,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.24468756, y: 0}
+  m_Offset: {x: 0.3185122, y: 0}
   serializedVersion: 2
-  m_Radius: 1.3853123
+  m_Radius: 1.0331464
 --- !u!1 &6682984355354989525
 GameObject:
   m_ObjectHideFlags: 0
