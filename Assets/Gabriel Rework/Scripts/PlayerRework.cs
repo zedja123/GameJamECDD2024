@@ -66,6 +66,7 @@ public class PlayerRework : MonoBehaviour
         timeBtwAttack = 0f;
         gravityStore = rb.gravityScale;
 
+        Physics2D.IgnoreLayerCollision(9, 11);
     }
 
     //Update
