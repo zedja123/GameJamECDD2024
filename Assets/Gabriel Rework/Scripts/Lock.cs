@@ -10,7 +10,6 @@ public class Lock : MonoBehaviour
     private void Start()
     {
         enemyMaster = GetComponent<EnemyMaster>();
-
     }
 
     private void FixedUpdate()
@@ -18,7 +17,6 @@ public class Lock : MonoBehaviour
         if (enemyMaster.health <= 1)
         {
             SceneManager.LoadScene("VictoryScene");
-
         }
     }
 }

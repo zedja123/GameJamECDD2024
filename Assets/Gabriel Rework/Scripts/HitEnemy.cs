@@ -9,7 +9,14 @@ public class HitEnemy : MonoBehaviour
         if (collision != null && collision.tag == "Enemy")
         {
             collision.GetComponent<EnemyMaster>().takeDamage(1);
+    
         }
-       
+
+        if (collision != null && collision.tag == "Lock")
+        {
+            collision.GetComponent<EnemyMaster>().takeDamage(1);
+             SoundManager.PlaySound(SoundManager.Sound.Lock);
+        }
+
     }
 }
